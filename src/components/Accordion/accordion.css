@@ -2,17 +2,16 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  padding-bottom: 150px;
 }
 
 .accordion__item {
-  width: 100%;
-  margin-bottom: 8px;
-  border: 1px solid #e9e9e9;
+  margin-bottom: 0.8rem;
+  border: 1px solid var(--gray-light);
 }
 
 .accordion__toggle-sign {
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bolder;
   position: relative;
   display: flex;
@@ -21,10 +20,10 @@
 
 .accordion__toggle-sign span {
   position: absolute;
-  width: 8px;
+  width: 0.8rem;
   border-bottom: 1px solid;
   color: var(--dark);
-  left: -28px;
+  left: -2.8rem;
 }
 
 .accordion__toggle-sign span:nth-child(2) {
@@ -37,24 +36,24 @@
   transform: rotate(540deg);
 }
 
-.accordion__title {
+.accordion__title-box {
   display: flex;
   flex-direction: row;
-  height: 55px;
+  height: 5.2rem;
   background-color: #fafafa;
-  padding-left: 20px;
+  padding-left: 2rem;
   justify-content: space-between;
   align-items: center;
 }
 
-.accordion__title:hover {
+.accordion__title-box:hover {
   cursor: pointer;
   background-color: #f5f4f4;
 }
 
 .accordion__content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s;
@@ -74,25 +73,24 @@
   margin: 0;
   opacity: 0;
   transition: 1s;
-
-  margin: 20px 20px 20px 10px;
-
+  margin: 2rem 2rem 2rem 1rem;
   justify-content: center;
 }
 
 .accordion__info h4 {
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
 }
 
 .accordion__info p {
-  margin-bottom: 6px;
+  margin-bottom: 0.6rem;
 }
 
 .accordion__content img {
-  height: 80px;
+  height: 8rem;
+  width: 8rem;
   border-radius: 50%;
   transition: 1s;
-  margin: 20px 10px 20px 20px;
+  margin: 2rem 1rem 0rem 1rem;
 }
 
 .accordion__info.show,
@@ -103,4 +101,18 @@
 .accordion__info,
 .accordion__content img {
   opacity: 0;
+}
+
+.accordion__info p:nth-child(4) {
+  margin-bottom: 0rem;
+}
+
+@media (min-width: 768px) {
+  .accordion__content {
+    flex-direction: row;
+  }
+
+  .accordion__content img {
+    margin: 2rem 1rem 0rem 2rem;
+  }
 }

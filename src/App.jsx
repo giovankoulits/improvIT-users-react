@@ -1,28 +1,30 @@
 import Header from "./components/Header/Header";
 import Accordion from "./components/Accordion/Accordion";
 import Loader from "./components/Loader/Loader";
-import { useEffect, useState } from "react";
+import Search from "./components/Search/Search";
+import useLogic from "./useLogic";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const request = await fetch("https://jsonplaceholder.typicode.com/users");
-      const data = await request.json();
-      setUsers(data);
-      setLoading(false);
-    };
-
-    fetchData().catch(console.error);
-  }, []);
+  const { handleChange, loading, searchInput, users, toggle, open } =
+    useLogic();
 
   return (
     <>
       <Header />
+      {!loading && (
+        <Search
+          handleChange={handleChange}
+          searchInput={searchInput}
+          users={users}
+        />
+      )}
       <Loader loading={loading} />
-      <Accordion users={users} />
+      <Accordion
+        users={users}
+        searchInput={searchInput}
+        toggle={toggle}
+        open={open}
+      />
     </>
   );
 }
