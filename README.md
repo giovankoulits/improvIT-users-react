@@ -3,6 +3,7 @@ I tried to keep things simple and clear.<br>
 I used raw CSS due to the simplicity of the design.<br>
 I did not find it necessary to install a CSS framework or preprocessor.<br>
 I chose React instead of raw JS for modularity and shorter syntax.<br>
+I used react & vite instead of create react app because it is faster lighter for deployment.<br>
 I Installed react-spinners for the loading animation.<br>
 
 **Installation:**<br>
