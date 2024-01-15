@@ -8,11 +8,6 @@
   --gray-dark: #a9a9b5;
 }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 html {
   overflow-y: scroll;
 }
