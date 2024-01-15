@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 
-const useLogic = () => {
+export const UsersContext = createContext(null);
+
+export function useUsers() {
+  return useContext(UsersContext);
+}
+
+const UsersContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [open, setOpen] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -16,11 +23,11 @@ const useLogic = () => {
       const usersRequest = await fetch(
         "https://jsonplaceholder.typicode.com/users"
       );
-      const userData = await usersRequest.json();
-      const coords = userData.map((user) => user?.address?.geo);
+      const usersData = await usersRequest.json();
+      const usersCoords = usersData.map((user) => user?.address?.geo);
 
       const userCountries = await Promise.all(
-        coords.map(({ lat, lng }) => {
+        usersCoords.map(({ lat, lng }) => {
           const latNoDecimal = lat.split(".")[0];
           const lngNoDecimal = lng.split(".")[0];
           return fetch(
@@ -29,31 +36,39 @@ const useLogic = () => {
         })
       );
 
-      userData.forEach(
+      usersData.forEach(
         (user, i) => (user.country = userCountries[i].location.country)
       );
-      setUsers(userData);
       setLoading(false);
+      setUsers(usersData);
     };
 
-    fetchUserData().catch(console.error);
+    fetchUserData().catch((error) => {
+      setLoading(false);
+      setError(error.message);
+    });
   }, []);
 
-  function toggle(index) {
+  function toggleAccordion(index) {
     if (index === open) {
       return setOpen(null);
     }
     setOpen(index);
   }
 
-  return {
+  const value = {
     loading,
     handleChange,
     searchInput,
     users,
-    toggle,
+    toggleAccordion,
     open,
+    error,
   };
+
+  return (
+    <UsersContext.Provider value={value}>{children}</UsersContext.Provider>
+  );
 };
 
-export default useLogic;
+export default UsersContextProvider;

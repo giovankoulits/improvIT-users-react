@@ -4,10 +4,13 @@ import logo from "../../assets/logo.png";
 const Navbar = () => {
   return (
     <section>
-      <div className="nav__top-bar"></div>
+      <div className="top-bar"></div>
+
       <nav className="nav">
         <div className="nav__main">
-          <img src={logo} alt="Logo" />
+          <a href="/">
+            <img src={logo} alt="Logo" />
+          </a>
           <h1>Team Members</h1>
         </div>
       </nav>

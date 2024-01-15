@@ -1,7 +1,9 @@
 import FadeLoader from "react-spinners/FadeLoader";
-
+import { useUsers } from "../../UsersContext";
 import "./loader.css";
-const Loader = ({ loading }) => {
+
+const Loader = () => {
+  const { loading } = useUsers();
   return (
     <div style={{ margin: loading ? "50px" : "0px" }} className="loader">
       <FadeLoader

@@ -1,10 +1,14 @@
 import "./search.css";
-/* import useLogic from "../../useLogic"; */
+import { useUsers } from "../../UsersContext";
 import searchIcon from "../../assets/search.png";
-const Search = ({ handleChange, searchInput, users }) => {
-  /*   const { handleChange, searchInput, users } = useLogic(); */
+
+const Search = () => {
+  const { handleChange, searchInput, users, loading, error } = useUsers();
   return (
-    <section className="search">
+    <section
+      style={{ display: loading || error ? "none" : "flex" }}
+      className="search"
+    >
       <div className="container">
         <div className="search__search-bar">
           <input

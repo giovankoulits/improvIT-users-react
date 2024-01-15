@@ -7,6 +7,11 @@
   --gray-strong: #a9a9b5;
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -46,6 +51,11 @@ h2 {
   padding: 0px;
   margin: 0px;
 }
+.error {
+  color: rgb(212, 81, 81);
+  text-align: center;
+  margin-top: 4.5rem;
+}
 
 h3 {
   font-family: "Montserrat", sans-serif;
@@ -55,8 +65,8 @@ h3 {
 }
 
 h4 {
-  color: var(--blue);
-  font-size: 1.4rem;
+  color: #00a4e4;
+  font-size: 1.5rem;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   padding: 0px;
@@ -64,11 +74,11 @@ h4 {
 }
 
 p {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   padding: 0px;
   margin: 0px;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--gray-strong);
 }
 

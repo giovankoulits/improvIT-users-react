@@ -1,10 +1,10 @@
 import userPic from "../../assets/user.jpg";
 import AccordionItem from "./AccordionItem";
+import { useUsers } from "../../UsersContext";
 import "./accordion.css";
-/* import useLogic from "../../useLogic"; */
 
-const Accordion = ({ users, toggle, open, searchInput }) => {
-  /* const { users, toggle, open, searchInput } = useLogic(); */
+const Accordion = () => {
+  const { users, toggleAccordion, open, searchInput, error } = useUsers();
   const filteredUsers = users.filter((user) =>
     user.name.toUpperCase().includes(searchInput.toUpperCase())
   );
@@ -12,18 +12,22 @@ const Accordion = ({ users, toggle, open, searchInput }) => {
   return (
     <section className="accordion">
       <div className="container">
-        {filteredUsers.map((user, i) => {
-          return (
-            <AccordionItem
-              key={i}
-              user={user}
-              toggle={toggle}
-              open={open}
-              userPic={userPic}
-              i={i}
-            />
-          );
-        })}
+        {error ? (
+          <h2 className="error">ERROR: {error}</h2>
+        ) : (
+          filteredUsers.map((user, i) => {
+            return (
+              <AccordionItem
+                key={i}
+                user={user}
+                toggleAccordion={toggleAccordion}
+                open={open}
+                userPic={userPic}
+                i={i}
+              />
+            );
+          })
+        )}
       </div>
     </section>
   );

@@ -6,7 +6,7 @@
   background-color: #fdfdfd;
 }
 
-.nav__top-bar {
+.top-bar {
   height: 3rem;
   background-color: var(--blue);
 }
@@ -21,19 +21,24 @@
 }
 .nav__main img {
   height: 46px;
-  margin-left: 0.8rem;
+  margin-left: 1rem;
 }
 .nav__main h1 {
   margin-left: 1.2rem;
 }
+.nav__main a {
+  margin: 0;
+  padding: 0;
+}
 
 @media (min-width: 768px) {
   .nav__main h1 {
-    margin-left: 1.6rem;
+    margin-left: 1.4rem;
   }
 
   .nav__main img {
     height: 52px;
+    margin-left: 1rem;
   }
 
   .nav__main {
